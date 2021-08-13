@@ -13,22 +13,30 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " NERDTree Key Mappings
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+nmap <C-m> <plug>NERDCommenterToggle
 
 " FZF Key Mappings
 nnoremap <silent> <C-g> :GFiles!<CR>
 nnoremap <silent> <C-b> :Buffers!<CR>
 nnoremap <C-f> :Rg!<CR>
 
+" Other Mappings
+" Save with ctrl+
+nnoremap <C-s> :update<CR>
+inoremap <C-s> <Esc>:update<CR>
+
 " Auto Run Commands
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e " Remove trailing spaces on save
 
 " Gruvbox
 colorscheme gruvbox
